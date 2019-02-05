@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message Money {
+    // The 3-letter currency code defined in ISO 4217.
+    string currency_code = 1;
+    // The whole units of the amount. 
+    // For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. 
+    int64 units = 2;
+    int32 nanos = 3;
+}

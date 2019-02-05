@@ -1,0 +1,43 @@
+{
+  "title": "4 - Setting up Protoc Compiler ",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Use `protoc` to generate code in any language</h3>"
+    },
+    {
+      "type": "text",
+      "data": "Generate python code"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "$ protoc -I=proto --python_out=python proto/*.proto"
+    },
+    {
+      "type": "text",
+      "data": "Generate java code"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "$ protoc -I=proto --java_out=java proto/*.proto"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "title": "1 - Course Introduction ",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>The need for Protocol Buffers&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<b>An Evolution of data Comma Separated Values (CSV)</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Advantages:</li><ul><li>Easy to parse</li><li>Easy to read&nbsp;</li><li>Easy to make sense of&nbsp;</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Disadvantages:</li><ul><li>The data types of elements have to be inferred and is not a guarantee&nbsp;</li><li>Parsing becomes tricky when data contains commas&nbsp;</li><li>Column names may or may not be there&nbsp;</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<b>An Evolution of data Relational tables definitions</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Relational table definitions add types:</li></ul>"
+    },
+    {
+      "type": "code",
+      "language": "sql",
+      "data": "CREATE TABLE distributors (\n  did   integer PRIMARY KEY,\n  name  varchar(40)\n);"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Advantages:</li><ul><li>Data is fully typed&nbsp;</li><li>Data fits in a table&nbsp;</li></ul><li>Disadvantages:</li><ul><li>Data has to be flat&nbsp;</li><li>Data is stored in a database, and data definition will be different for each database&nbsp;</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<b>An Evolution of data JSON (JavaScript Object Notation)</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>JSON format can be shared across the network!</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Advantages:</li><ul><li>Data can take any form (arrays, nested elements)</li><li>JSON is a widely accepted format on the web&nbsp;</li><li>JSON can be read by pretty much any language&nbsp;</li><li>JSON can be easily shared over a network&nbsp;</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Disadvantages:</li><ul><li>Data has no schema enforcing&nbsp;</li><li>JSON Objects can be quite big in size because of repeated keys&nbsp;</li><li>No comments, metadata, documentation&nbsp;</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<b>An Evolution of data Protocol Buffers</b>"
+    },
+    {
+      "type": "code",
+      "language": "protobuf",
+      "data": "syntax = \"proto3\";\n\nmessage MyMessage {\n  int32 id = 1;\n  string first_name = 2;\n  bool is_validated = 3;\n}"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Protocol Buffers is defined by a .proto text file&nbsp;</li><li>You can easily read it and understand it as a human&nbsp;</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Advantages<br></li><ul><li>Data is fully typed</li><li>Data is compressed automatically (less CPU usage)&nbsp;</li><li>Schema (defined using .proto file) is needed to generate code and read the data&nbsp;</li><li>Documentation can be embedded in the schema&nbsp;</li><li>Data can be read across any language (C#, Java, Go, Python, JavaScript, etc…)</li><li>Schema can evolve over time, in a safe manner (schema evolution)</li><li>3-10x smaller, 20-100x faster than XML</li><li>Code is generated for you automatically!</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Disadvantages:<br></li><ul><li>Protobuf support for some languages might be lacking (but the main ones are fine)</li><li>Can’t “open” the serialized data with a text editor (because it’s compressed and serialised)</li></ul></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Today Protocol Buffers is used as Google for almost all their internal applications.&nbsp;</li><li>They have over 48000 Protobuf messages types in 12000 .proto files&nbsp;</li><li>If it’s working for Google, there’s a great chance it’ll be working for you!</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<h3>How are Protocol Buffers used?</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<b>How is Protocol Buffer Used? To share data across languages!</b>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/370E1FDB98D9EE358A23DD9F91146893.png\" alt=\"Screen Shot 2019-02-04 at 21.24.18.png\" width=\"717\" height=\"325\">"
+    },
+    {
+      "type": "text",
+      "data": "<b>How is Protocol Buffer Used?&nbsp;</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Some databases may have support for Protocol Buffers data format.&nbsp;</li><li>Lots of RPC frameworks, including gRPC, use Protocol Buffers to exchange data&nbsp;</li><li>Google Uses it for all their internal API&nbsp;</li><li>Some big projects like `etcd` use Protocol Buffers for transporting data&nbsp;</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<b>Proto2 vs Proto3</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Mid 2016, Google release the 3rd iteration of Protocol Buffers, named proto3&nbsp;</li><li>We will only view proto3 in this course, as it will be the most common format used forward, and it has the best compatibility across a wide array of programming languages&nbsp;</li><li>It is also the easiest to learn!</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Course Structure&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/DB87C382068C973602A7DEF366B526A3.png\" alt=\"Screen Shot 2019-02-04 at 21.37.52.png\" width=\"746\" height=\"319\">"
+    },
+    {
+      "type": "text",
+      "data": "<b>Courses Objectives</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ol><li>Write simple and complex .proto files&nbsp;</li><li>Practice Exercises to Confirm the learnings&nbsp;</li><li>Leverage Imports and Packages appropriately&nbsp;</li><li>Generate Code using `protoc` in any language&nbsp;</li><li>Code in Java/Python with Protocol Buffers&nbsp;</li><li>Understand how Data Evolution works for Protobuf&nbsp;</li><li>Leanr about advanced Protocol Buffers concepts&nbsp;</li></ol>"
+    },
+    {
+      "type": "text",
+      "data": "<b>Pre-requisites&nbsp;</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>Knowledge of one programming language is needed&nbsp;</li><li>Previous experience with other formats such as XML or JSON is preferred&nbsp;</li><li>Lots of willingness to learn something new!&nbsp;</li><li>The course is made of short lectures to help you easily find content</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "<b>Who is the course for?</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li><u>Developers</u> who want to understand how to write .proto files and write code to create Protocol Buffer data&nbsp;</li><li><u>Architect</u> who want to understand how Protocol Buffers works and be useful for their solution architecture&nbsp;</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

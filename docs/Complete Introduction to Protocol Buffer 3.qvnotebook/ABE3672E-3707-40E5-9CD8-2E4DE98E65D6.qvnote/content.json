@@ -1,0 +1,200 @@
+{
+  "title": "6 - Golang Programming with Protocol Buffers",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Code generation in Golang&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/PROTOCOL-EXAMPLE-GO/generate.sh"
+    },
+    {
+      "type": "code",
+      "language": "sh",
+      "data": "protoc -I src/ --go_out=src src/simple/simple.proto"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Simple Proto Struct in Golang</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/PROTOCOL-EXAMPLE-GO/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"strconv\"\n\n\tsimplepb \"github.com/PROTOCOL-EXAMPLE-GO/src/simple\"\n)\n\nfunc main() {\n\tdoSimple()\n}\n\nfunc doSimple() {\n\tsm := simplepb.SimpleMessage{\n\t\tId:         12345,\n\t\tIsSimple:   true,\n\t\tName:       \"My Simple Message\",\n\t\tSampleList: []int32{1, 4, 7, 8},\n\t}\n\n\tsm.Name = \"I renamed you\"\n\n\tfmt.Println(sm)\n\tfmt.Println(\"The ID is:\" + strconv.FormatInt(int64(sm.GetId()), 10))\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Reading and Writing to Disk&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/PROTOCOL-EXAMPLE-GO/main.go"
+    },
+    {
+      "type": "code",
+      "language": "golang",
+      "data": "package main\n\nimport (\n\t\"fmt\"\n\t\"io/ioutil\"\n\t\"log\"\n\t\"strconv\"\n\n\tsimplepb \"github.com/PROTOCOL-EXAMPLE-GO/src/simple\"\n\t\"github.com/golang/protobuf/proto\"\n)\n\nfunc main() {\n\tsm := doSimple()\n\treadAndWriteDemo(sm)\n}\n\nfunc readAndWriteDemo(pb proto.Message) {\n\t// writeToFile()\n\twriteToFile(\"simple.bin\", pb)\n\tsm := &simplepb.SimpleMessage{}\n\t// readFromFile()\n\treadFromFile(\"simple.bin\", sm)\n\tfmt.Println(sm)\n}\n\nfunc doSimple() *simplepb.SimpleMessage {\n\tsm := simplepb.SimpleMessage{\n\t\tId:         12345,\n\t\tIsSimple:   true,\n\t\tName:       \"My Simple Message\",\n\t\tSampleList: []int32{1, 4, 7, 8},\n\t}\n\n\tsm.Name = \"I renamed you\"\n\n\tfmt.Println(sm)\n\tfmt.Println(\"The ID is:\" + strconv.FormatInt(int64(sm.GetId()), 10))\n\n\treturn &sm\n}\n\nfunc writeToFile(fname string, pb proto.Message) error {\n\tout, err := proto.Marshal(pb)\n\tif err != nil {\n\t\tlog.Fatalln(\"Can't serialize to bytes\", err)\n\t\treturn err\n\t}\n\tif err := ioutil.WriteFile(fname, out, 0644); err != nil {\n\t\tlog.Fatalln(\"Can't write to file\", err)\n\t\treturn err\n\t}\n\tfmt.Println(\"Data has been written!\")\n\treturn nil\n}\n\nfunc readFromFile(fname string, pb proto.Message) error {\n\tin, err := ioutil.ReadFile(fname)\n\tif err != nil {\n\t\tlog.Fatalln(\"Something went wrong when reading the file\", err)\n\t\treturn err\n\t}\n\n\terr2 := proto.Unmarshal(in, pb)\n\tif err != nil {\n\t\tlog.Fatalln(\"Couldn't put the bytes into the protocol buffers struct\", err)\n\t\treturn err2\n\t}\n\n\treturn nil\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Reading and Writing to JSON</h3>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

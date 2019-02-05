@@ -1,0 +1,167 @@
+{
+  "title": "3 - Protocol Buffers Basics II",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<h3>Defining Mutiple Messages in the Same File&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li><code>​</code>​It is possible, in the same<font color=\"#0096ff\"> .proto</font> file, to define multiple types&nbsp;<br></li><li>It is then super easy to reference them if we need to&nbsp;</li><li>Let’s create a message Date and add that to our Person as a field for a birthday&nbsp;</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "/src/basics/same-level-message.proto"
+    },
+    {
+      "type": "code",
+      "language": "protobuf",
+      "data": "// The syntax for this file is proto3\nsyntax = \"proto3\";\n\n/* Person is used to identify users \n* across our system */\nmessage Person {\n    // the age as of the person's creation\n    int32 age = 1;\n    // the first name as documented in the signup form \n    string first_name = 2;\n    string last_name = 3; // last name as documented in the signup form\n    // small_picture represents a small .jpg file \n    bytes small_picture = 4;\n    bool is_profile_verified = 5;\n    // height of the person in cms\n    float height = 6;\n\n    // a list of phone numbers that is optional to provide at signup\n    repeated string phone_numbers = 7;\n\n    // we currently consider only 3 eye colors \n    enum EyeColor {\n        UNKNOWN_EYE_COLOR = 0;\n        EYE_GREEN = 1;\n        EYE_BROWN = 2;\n        EYE_BLUE = 3;\n    }\n\n    // it's an enum as defined above\n    EyeColor eye_color = 8;\n\n    // Person's birthday \n    Date birthday = 9;\n}\n\nmessage Date {\n    // Year of Date. Must be from 1 to 9999, or 0 if specifying a date without \n    // a year. \n    int32 year = 1;\n\n    // Month of year. Must be from 1 to 12. \n    int32 month = 2;\n\n    // Day of month. Must be from 1 to 31 and valid for the year and month \n    int32 day = 3;\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Nesting Messages&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>It is possible to define types within types&nbsp;</li><li>The reasons could be:&nbsp;</li><ul><li>Avoiding naming conflicts&nbsp;</li><li>Enforcing some level of “locality” for that type&nbsp;</li></ul><li>You can nest types as deeply as you want&nbsp;</li><li>Let’s create a field Address and use that in our Person to have multiple addresses&nbsp;</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "/src/basics/nested-messages.proto"
+    },
+    {
+      "type": "code",
+      "language": "protobuf",
+      "data": "// The syntax for this file is proto3\nsyntax = \"proto3\";\n\n/* Person is used to identify users \n* across our system */\nmessage Person {\n    // the age as of the person's creation\n    int32 age = 1;\n    // the first name as documented in the signup form \n    string first_name = 2;\n    string last_name = 3; // last name as documented in the signup form\n    // small_picture represents a small .jpg file \n    bytes small_picture = 4;\n    bool is_profile_verified = 5;\n    // height of the person in cms\n    float height = 6;\n\n    // a list of phone numbers that is optional to provide at signup\n    repeated string phone_numbers = 7;\n\n    // we currently consider only 3 eye colors \n    enum EyeColor {\n        UNKNOWN_EYE_COLOR = 0;\n        EYE_GREEN = 1;\n        EYE_BROWN = 2;\n        EYE_BLUE = 3;\n    }\n\n    // it's an enum as defined above\n    EyeColor eye_color = 8;\n\n    // Person's birthday \n    Date birthday = 9;\n\n    // We define the type Address within Person (full name is Person.Address)\n    message Address {\n        string address_line_1 = 1;\n        string address_line_2 = 2;\n        string zip_code = 3;\n        string city = 4;\n        string country = 5;\n    }\n\n    // multiple addresses \n    repeated Address addresses = 10;\n}\n\nmessage Date {\n    // Year of Date. Must be from 1 to 9999, or 0 if specifying a date without \n    // a year. \n    int32 year = 1;\n\n    // Month of year. Must be from 1 to 12. \n    int32 month = 2;\n\n    // Day of month. Must be from 1 to 31 and valid for the year and month \n    int32 day = 3;\n}"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Imports</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<b>Importing Types</b>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>You can also have different types in different <font color=\"#0096ff\">.proto </font>files&nbsp;</li><li>This is useful if you want to re-use code and import other<font color=\"#0096ff\"> .proto</font> files created by people in your team&nbsp;</li><li>Let’s move our Date out of our Person file and import the date file instead!</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "/src/basics/imports"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Packages&nbsp;</h3>"
+    },
+    {
+      "type": "text",
+      "data": "<ul><li>It is very important to define the packages in which your protocol buffer messages live&nbsp;</li><ul><li>when your code gets compiled, it will be placed at the package you indicated.&nbsp;</li><li>It also helps to prevent name conflicts between messages (my.package.Person)</li></ul><li>Packages will help all the different languages compile correctly from .proto files (Java, C#, Python, Go, etc…)</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "/src/basics/packages"
+    },
+    {
+      "type": "text",
+      "data": "<h3>Solution to Practice Exercises IIZ</h3>"
+    },
+    {
+      "type": "text",
+      "data": "/src/basics/exercise"
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}
