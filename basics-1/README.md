@@ -13,7 +13,7 @@
 
 ## Scalar Types
 
-`scalar-types.proto`
+[scalar-types.proto](https://github.com/mer-study-microservices/protocol-buffers/blob/master/basics-1/scalar-types.proto)
 
 ```
 int32 (age)
@@ -63,7 +63,7 @@ float (height)
 
 ## Repeated Fields
 
-Add a list of phone numbers to our Person example!: `repeated-fields.proto`
+Add a list of phone numbers to our Person example!: [repeated-fields.proto](https://github.com/mer-study-microservices/protocol-buffers/blob/master/basics-1/repeated-fields.proto)
 
 Key word `repeated` means a list. 
 
@@ -72,7 +72,7 @@ Key word `repeated` means a list.
 
 ## Comments
 
-`comments.proto`
+[comments.proto](https://github.com/mer-study-microservices/protocol-buffers/blob/master/basics-1/comments.proto)
 
 * It is possible to embed comments in your `.proto` file 
 * It is actually recommended to use comments as a form of documentation for your schemas.
@@ -90,7 +90,7 @@ Key word `repeated` means a list.
 
 ## Enums
 
-Add an Enum to `Person` for the field `Eye Color`: `enums.proto`
+Add an Enum to `Person` for the field `Eye Color`: [enums.proto](https://github.com/mer-study-microservices/protocol-buffers/blob/master/basics-1/enums.proto)
 
 * If you know all the values a field can take in advance, you can leverage the `Enum` type
 * **The first value of an Enum is the default value**
