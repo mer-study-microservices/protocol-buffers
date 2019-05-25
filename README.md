@@ -8,3 +8,9 @@
     * [basics-2](https://github.com/mer-study-microservices/protocol-buffers/tree/master/basic-2)
 * Setting up Protoc Compiler
     * [protoc-compiler](https://github.com/mer-study-microservices/protocol-buffers/tree/master/protoc-compiler)
+* Java Programming with Protocol Buffers
+    *[protobuf-example-java](https://github.com/Jieqiong-Mer/protobuf-example-java)
+* Golang Programming with Protocol Buffers
+    *[protobuf-example-go](https://github.com/Jieqiong-Mer/protobuf-example-go)
+* Protocol Buffers Advanced
+    * `services`
