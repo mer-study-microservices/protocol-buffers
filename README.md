@@ -1,5 +1,10 @@
 # protocol-buffers
 
-Notes and Code examples from this 
+[Complete Introduction to Protocol Buffers3](https://learning.oreilly.com/videos/complete-introduction-to/9781789349344)
 
-<a href="https://learning.oreilly.com/videos/complete-introduction-to/9781789349344"><img src="https://learning.oreilly.com/api/v1/videoplaylists/image/800x600/media/book/44/9781789349344/9781789349344-2018-05-28.jpg" /></a>
+* Protocol Buffers Basics 1
+    * basics-1
+* Protocol Buffers Basics 2
+    * basics-2
+* Setting up Protoc Compiler
+    * protoc-compiler
